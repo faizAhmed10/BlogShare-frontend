@@ -1,38 +1,257 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main: #030637;
+  --complement: #343366;
+  --accent: #00C897;
+  --tint: #F2ECFF;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: var(--main) ;
+  color: var(--tint);
+  font-family: 'Poppins';
+}
+
+/* SCROLL-BAR */
+::-webkit-scrollbar {
+  width: 12px; /* Width of vertical scrollbar */
+  height: 12px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track{
+  background: #343366;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: black; /* Color of the track */
+  border-radius: 10px; /* Rounded corners for the track */
+  border: 1px solid #343366;
+} 
+
+/* START-PAGE */
+
+.start-page{
+    overflow: hidden;
+    user-select: none;
+}
+
+.intro-line{
+    position: absolute;
+    font-family: 'Kalam', cursive;
+}
+.rotating-text-wrapper {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .rotating-text-wrapper h2 {
+    font-size: 2.5em;
+    margin: 0;
+    padding: 0.3em;
+    color: #fff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+    opacity: 0;
+  }
+  .rotating-text-wrapper h2:nth-child(1) {
+    background-color: lightseagreen;
+    animation-name: rotating-text-1;
+  }
+  @keyframes rotating-text-1 {
+    0% {
+      transform: translateY(200%);
+    }
+    16% {
+      transform: translateY(100%);
+      opacity: 1;
+    }
+    18% {
+      opacity: 0;
+    }
+  }
+  .rotating-text-wrapper h2:nth-child(2) {
+    background-color: tomato;
+    animation-name: rotating-text-2;
+  }
+  @keyframes rotating-text-2 {
+    18% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    34% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    38% {
+      opacity: 0;
+    }
+  }
+  @keyframes rotating-text-3 {
+    37% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    53% {
+      transform: translateY(-100%);
+      opacity: 1;
+    }
+    56% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes rotating-text-4 {
+    55% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    71% {
+      transform: translateY(100%);
+      opacity: 1;
+    }
+    73% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes rotating-text-5 {
+    72% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    88% {
+      transform: translateY(-100%);
+      opacity: 1;
+    }
+    89% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+  @keyframes rotating-text-6 {
+    88% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    95% {
+      transform: translateY(-100%);
+      opacity: 1;
+    }
+    99% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+  .rotating-text-wrapper h2:nth-child(3) {
+    background-color: cornflowerblue;
+    animation-name: rotating-text-3;
+  }
+  .rotating-text-wrapper h2:nth-child(4) {
+    background-color: rgb(60, 180, 232);
+    animation-name: rotating-text-4;
+  }
+  .rotating-text-wrapper h2:nth-child(5) {
+    background-color: rgb(240, 35, 55);
+    animation-name: rotating-text-5;
+  }
+  .rotating-text-wrapper h2:nth-child(6) {
+    background-color: rgb(67, 232, 34);
+    animation-name: rotating-text-6;
+  }
+
+  @media screen and (max-width: 576px) {
+    .rotating-text-wrapper {
+      font-size: 0.7rem;
+    }
+  }
+
+
+.bdr{
+  border-block: 1px solid white;
+}
+
+/* NAVBAR */
+
+.nav{
+  background: linear-gradient(178.1deg, rgb(60, 55, 106) 8.5%, rgb(23, 20, 69) 82.4%);  
+}
+#nav-bar li{
+  list-style: none;
   text-align: center;
+  font-family: 'kalam';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#nav-bar li a {
   color: white;
+  position: relative;
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+#nav-bar li a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .3s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#nav-bar li a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+#nav-bar .active::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.hver::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  background-color: rgb(78, 3, 78);
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: -1;
+  height: 50px;
+  border-radius: 999999px;
+  transition: opacity .3s ease-in-out; /* Use opacity instead of display */
+  opacity: 0; /* Initially hide the pseudo-element */
+}
+
+.hver:hover::before {
+  opacity: 1; 
+}
+
+.mo-active::before {
+  opacity: 1; 
+}
+
+
+.btn-hover:hover{
+  background-image: linear-gradient(30deg, #078968 60%, #06735a);
+
 }
